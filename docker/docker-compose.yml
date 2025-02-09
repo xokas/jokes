@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+  jokes-front:
+    build: ../frontend
+    ports:
+      - "8080:80"
+    networks:
+      - app-network
+    depends_on:
+      - jokes-back
+    environment:
+      - NODE_ENV=production
+
+  jokes-back:
+    build: ../backend
+    ports:
+      - "3000:3000"
+    networks:
+      - app-network
+    environment:
+      - NODE_ENV=production
+
+networks:
+  app-network:
+    driver: bridge
