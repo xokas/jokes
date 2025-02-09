@@ -1,0 +1,23 @@
+{
+    "name": "jokes-backend",
+    "version": "1.0.0",
+    "description": "A simple node project to retrieve quotes by API Rest",
+    "main": "./src/server.js",
+    "scripts": {
+        "start": "node ./src/server.js",
+        "dev": "nodemon ./src/server.js",
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.20.0",
+        "eslint-plugin-n": "^17.15.1",
+        "eslint-plugin-node": "^11.1.0",
+        "nodemon": "^3.1.9"
+    },
+    "engines": {
+        "node": ">=22.0.0"
+    },
+    "author": "JLV",
+    "license": "MIT"
+}
