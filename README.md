@@ -40,6 +40,7 @@ docker  run  -p  8080:80  jokes-front
 
 Without Docker:
 ```shell
+npm install
 npm run serve
 ```
 
