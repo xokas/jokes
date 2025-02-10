@@ -12,7 +12,8 @@ This is a website that displays humorous quotes at the click of a button. It is 
 To build and run the entire project using Docker, use:
 
 ```shell
-docker-compose  up  --build
+cd ./docker
+docker compose up -d
 ```
 
 ### Only backend
