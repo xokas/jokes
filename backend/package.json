@@ -4,7 +4,7 @@
     "description": "A simple node project to retrieve quotes by API Rest",
     "main": "./src/server.js",
     "scripts": {
-        "start": "node ./src/server.js",
+        "start": "exec node ./src/server.js #exec reemplaza el shell intermedio para que la señal que le envíe npm lleguen correctamente.",
         "dev": "nodemon ./src/server.js",
         "lint": "eslint .",
         "lint:fix": "eslint . --fix"

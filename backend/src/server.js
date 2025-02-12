@@ -14,7 +14,7 @@ const server = http.createServer(async function (req, res) {
       return serveRandomQuote(res, quotes);
     } else {
       try {
-        await lq.loadQuotes(); 
+        await lq.loadQuotes();
         return serveRandomQuote(res, lq.getQuotes());
       } catch (error) {
         console.log("Error loading quotes: " + error);
@@ -38,3 +38,19 @@ function serveRandomQuote(res, quotes) {
 server.listen(PORT, () => {
   console.log("Server running on http://localhost:" + PORT);
 });
+
+// Cerrar adecuadamente la aplicación
+// Esto es un must-have en una app/servicio de cualquier tipo
+function gracefulShutdown(signal) {
+  console.log(`\nRecibido ${signal}, cerrando el servidor...`);
+  server.close(() => {
+    console.log("Servidor cerrado correctamente.");
+    // No se hace exit, se espera que el server termine adecuadamente
+    // Si hubiera otros procesos, workers, threads... también habría que notificarlos
+  });
+}
+
+// Manejar SIGINT y SIGTERM
+// Otras señales se podrían manejar para recargar configuración, volcar datos en log...
+process.on("SIGINT", () => gracefulShutdown("SIGINT"));
+process.on("SIGTERM", () => gracefulShutdown("SIGTERM"));
